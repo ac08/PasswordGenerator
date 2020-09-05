@@ -81,20 +81,24 @@ let specialCharacters = [
   '_',
   '.'
 ];
-
 let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-let password = "";
-
 let options = [lowerCasedCharacters, upperCasedCharacters, specialCharacters, numbers];
+let password = "";
 
 
 // Assignment Code
 function getPasswordOptions() {
-  let passwordLength = parseInt(
-    prompt('How many characters do you want in your password?')
-  )
+  let passwordCriteria = [
+    parseInt(prompt('How many characters do you want in your password?')),
+    parseInt(prompt('How many numbers do you want in your password?')),
+    parseInt(prompt('How many special characters do you want in your password?'))
+  ]
+  let passwordLength = passwordCriteria[0];
   window.passwordLength = passwordLength;
+  let passwordNumbers = passwordCriteria[1];
+  window.passwordNumbers = passwordNumbers;
+  let passwordCharacters = passwordCriteria[2];
+  window.passwordCharacters = passwordCharacters;
 }
 getPasswordOptions();
 

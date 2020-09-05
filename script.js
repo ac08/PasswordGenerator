@@ -102,12 +102,33 @@ function getPasswordOptions() {
 }
 getPasswordOptions();
 
+// function generatePassword() {
+//   for (let i = 0; i < window.passwordLength; i++) {
+//     let random_array_index = Math.floor(Math.random() * options.length);
+//     let random_array = options[random_array_index];
+//     let random_index = Math.floor(Math.random() * random_array.length);
+//     password += random_array[random_index];
+//   }
+//   return password
+// }
+
 function generatePassword() {
-  for (let i = 0; i < window.passwordLength; i++) {
-    let random_array_index = Math.floor(Math.random() * options.length);
-    let random_array = options[random_array_index];
-    let random_index = Math.floor(Math.random() * random_array.length);
-    password += random_array[random_index];
+  for (let i = 0; i < passwordLength; i++) {
+    for (let j = 0; j < passwordNumbers; j++) {
+      let random_index = Math.floor(Math.random() * numbers.length);
+      password += numbers[random_index];
+      console.log(password);
+    }
+    for (let y = 0; y < passwordCharacters; y++) {
+      let random_index = Math.floor(Math.random() * specialCharacters.length);
+      password += specialCharacters[random_index];
+      console.log(password);
+
+    }
+    let random_index = Math.floor(Math.random() * lowerCasedCharacters.length);
+    password += lowerCasedCharacters[random_index];
+    console.log(password);
+
   }
   return password
 }

@@ -93,7 +93,7 @@ function getPasswordOptions() {
     parseInt(prompt('How many numbers do you want in your password?')),
     parseInt(prompt('How many special characters do you want in your password?'))
   ]
-  let passwordLength = passwordCriteria[0];
+  let passwordLength = (passwordCriteria[0] - passwordCriteria[1] - passwordCriteria[2]);
   window.passwordLength = passwordLength;
   let passwordNumbers = passwordCriteria[1];
   window.passwordNumbers = passwordNumbers;
@@ -112,23 +112,42 @@ getPasswordOptions();
 //   return password
 // }
 
-function generatePassword() {
-  for (let i = 0; i < passwordLength; i++) {
-    for (let j = 0; j < passwordNumbers; j++) {
-      let random_index = Math.floor(Math.random() * numbers.length);
-      password += numbers[random_index];
-      console.log(password);
-    }
-    for (let y = 0; y < passwordCharacters; y++) {
-      let random_index = Math.floor(Math.random() * specialCharacters.length);
-      password += specialCharacters[random_index];
-      console.log(password);
+// Attempt at a Nested For Loop
+// function generatePassword() {
+//   for (let i = 0; i < passwordLength; i++) {
+//     for (let j = 0; j < passwordNumbers; j++) {
+//       let random_index = Math.floor(Math.random() * numbers.length);
+//       password += numbers[random_index];
+//       console.log(password);
+//     }
+//     for (let y = 0; y < passwordCharacters; y++) {
+//       let random_index = Math.floor(Math.random() * specialCharacters.length);
+//       password += specialCharacters[random_index];
+//       console.log(password);
 
-    }
+//     }
+//     let random_index = Math.floor(Math.random() * lowerCasedCharacters.length);
+//     password += lowerCasedCharacters[random_index];
+//     console.log(password);
+
+//   }
+//   return password
+// }
+
+
+function generatePassword() {
+  password = "";
+  for (let i = 0; i < passwordLength; i++) {
     let random_index = Math.floor(Math.random() * lowerCasedCharacters.length);
     password += lowerCasedCharacters[random_index];
-    console.log(password);
-
+  }
+  for (let j = 0; j <  passwordNumbers; j++) {
+    let random_index = Math.floor(Math.random() * numbers.length);
+    password += numbers[random_index];
+  }
+  for (let y = 0; y <  passwordCharacters; y++) {
+    let random_index = Math.floor(Math.random() * specialCharacters.length);
+    password += specialCharacters[random_index];
   }
   return password
 }
@@ -140,7 +159,6 @@ let generateBtn = document.querySelector("#generate");
 function writePassword() {
   let password = generatePassword();
   let passwordText = document.querySelector("#password");
-
   passwordText.value = password;
 }
 

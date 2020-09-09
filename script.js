@@ -1,8 +1,19 @@
 // The Password Generator will provide a password between 8 and 128 characters, based on user specifications
 
-// Assignment Code and Event Listener 
+// Assignment Code and Event Listener for password generations
 let generateBtn = document.querySelector("#generate");
 generateBtn.addEventListener("click", writePassword);
+
+// Assignment Code and Event Listener for copy paste functionality 
+function copyPassword() {
+  let copyText = document.getElementById("password"); 
+  copyText.select();
+  document.execCommand("copy");
+  alert("Copied the password: " + copyText.value);
+}
+
+let textArea = document.querySelector('textarea');
+textArea.addEventListener("mouseover", copyPassword);
 
 // Declare Variables
 let password       = "";
@@ -85,10 +96,10 @@ function writePassword() {
   let password = generatePassword();
   let passwordText = document.querySelector("#password");
   passwordText.value = password;
+  alert("hover over text area to copy password to clipboard")
   // clear passwordLength value in order to select new length on re-click
   passwordLength="";
 }
 
-
-// copy and paste button
+// copy and paste button on hover?? 
 // screencastify 

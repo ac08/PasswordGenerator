@@ -12,8 +12,9 @@ function copyPassword() {
   alert("Copied the password: " + copyText.value);
 }
 
-let textArea = document.querySelector('textarea');
-textArea.addEventListener("mouseover", copyPassword);
+let textArea = document.querySelector("textArea");
+textArea.addEventListener("dblclick", copyPassword)
+
 
 // Declare Variables
 let password       = "";
@@ -101,5 +102,4 @@ function writePassword() {
   passwordLength="";
 }
 
-// copy and paste button on hover?? 
-// screencastify 
+// Screencastify for DEMO

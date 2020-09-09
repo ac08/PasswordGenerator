@@ -4,11 +4,11 @@
 let generateBtn = document.querySelector("#generate");
 generateBtn.addEventListener("click", writePassword);
 
-// Variable Declaration
+// Declare Variables
 let password       = "";
 let passwordLength = "";
 
-// Arrays
+// Declare Arrays
 let alphaLower  = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 let alphaUpper  = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 let specialChar = ["!", "%", "&", ",", "*", "+", "-", ".", "/", "<", ">", "?","~"];
@@ -21,7 +21,9 @@ let composition = [
   {name:  number,      include: false}
 ]
 
+// Code to determine length of password through interaction with end user
 function getPasswordLength() {
+  // while loop continues until password requirements are validated
   while ((isNaN(passwordLength) || passwordLength < 8 || passwordLength > 128)) {
     passwordLength = parseInt(prompt("Length?"));
     if (isNaN(passwordLength)) {
@@ -40,7 +42,7 @@ function getPasswordLength() {
   }
 }
 
-// Assign boolean values to keys on composition array (of objects)
+// Use of "confirm" dialog to assign boolean values to "include" key on composition array (of objects); determines password composition
 function getPasswordComposition() {
   composition[0].include  = confirm("If possible, would you like to include lower-case characters in your password?");
   composition[1].include  = confirm("If possible, would you like to include upper-case characters in your password?");
@@ -48,13 +50,14 @@ function getPasswordComposition() {
   composition[3].include  = confirm("If possible, would you like to include numbers in your password");
 }
 
-// Filters the array of objects who's value "include" is equal to true
+// Filters the array of objects who's key value "include" is equal to true; restructures/reconfigures the composition array based on user input
 function setPasswordComposition() {
-  composition = composition.filter(function(el) {
-    return el.include === true; 
+  composition = composition.filter(function(obj) {
+    return obj.include === true; 
   })
 }
 
+// Password generator loop to construct password
 function generatePassword() {
  password = "";
  for (let i = 0; i < passwordLength; i++) {
@@ -63,13 +66,13 @@ function generatePassword() {
   //  select name of array based on the object's "name" key
    let random_array = composition[random_index].name;
    password += random_array[Math.floor(Math.random() * random_array.length)]
-   
  }
   return password 
 }
 
 // Write password to the #password input
 function writePassword() {
+  // reset composition array to default upon button click
   composition = [
     {name:  alphaLower,  include: false},
     {name:  alphaUpper,  include: false},
@@ -82,11 +85,10 @@ function writePassword() {
   let password = generatePassword();
   let passwordText = document.querySelector("#password");
   passwordText.value = password;
+  // clear passwordLength value in order to select new length on re-click
+  passwordLength="";
 }
 
 
 // copy and paste button
-// refreshing page as part of writePassword Function
-// what happens when confirm prompts are all ignored... must select one criteria 
-// add comments 
 // screencastify 

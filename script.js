@@ -97,7 +97,7 @@ function writePassword() {
   let password = generatePassword();
   let passwordText = document.querySelector("#password");
   passwordText.value = password;
-  alert("hover over text area to copy password to clipboard")
+  alert("double click the text area to copy password to clipboard")
   // clear passwordLength value in order to select new length on re-click
   passwordLength="";
 }

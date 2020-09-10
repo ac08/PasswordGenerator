@@ -91,10 +91,13 @@ function writePassword() {
     {name:  specialChar, include: false},
     {name:  number,      include: false}
   ]
+  // complile password length and user specifications
   getPasswordLength();
   getPasswordComposition();
   setPasswordComposition();
+  // set password to password variable
   let password = generatePassword();
+  // place generated password on page
   let passwordText = document.querySelector("#password");
   passwordText.value = password;
   alert("double click the text area to copy password to clipboard")
